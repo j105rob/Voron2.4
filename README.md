@@ -144,8 +144,8 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
   
   make: *** [src/stm32/Makefile:111: flash] Error 255
   ```
-  - Might have to do this:
-    ```
+- Might have to do this:
+  ```
     voron@voron:~/klipper $ make flash FLASH_DEVICE=0483:df11
     Flashing out/klipper.bin to 0483:df11
     sudo dfu-util -d ,0483:df11 -R -a 0 -s 0x8008000:leave -D out/klipper.bin
@@ -178,9 +178,9 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
     Transitioning to dfuMANIFEST state
     dfu-util: can't detach
     Resetting USB to switch back to runtime mode
-    ```
-    - Might get stuck in DFU mode, so power cycle the printer.
-    - Verify firmware version in the machine tab.
+  ```
+- Might get stuck in DFU mode, so power cycle the printer.
+- Verify firmware version in the machine tab.
 
 
   
