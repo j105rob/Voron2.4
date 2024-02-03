@@ -182,5 +182,10 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
 - Might get stuck in DFU mode, so power cycle the printer.
 - Verify firmware version in the machine tab.
 
+#### Resources
+- [Klipper FAQs - How do I upgrade to the latest software?](https://github.com/Klipper3d/klipper/blob/master/docs/FAQ.md#how-do-i-upgrade-to-the-latest-software)
+- [BTT EBB2040 CANBus toolhead Klipper update](https://github.com/Esoterical/voron_canbus/blob/main/Updating.md#updating-toolhead-klipper)
 
+
+  
   
