@@ -1,7 +1,7 @@
 # Voron V2.4
 ### Voron 2.4 Notes &amp; Stuff
 
-#### Update Firmware on the MCUs
+#### Update Firmware on the MCUs & U2C
 
 When getting the MCU Protocol Error message in the UI (e.g. Mainsail), you need to update firmware on the MCUs listed in the error message. These instructions assume that you have already installed Klipper on the MCUs and this is just a process on how to update the firmware. 
 
@@ -182,8 +182,69 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
 - Might get stuck in DFU mode, so power cycle the printer.
 - Verify firmware version in the machine tab.
 
+##### Flash the BTT U2C
+
+- Unplug the CAN cable from the BTT EBB2040 MCU. It can't be powered while updating the U2C firmware.
+- Unplug the USB from the Pi for the U2C, hold the `BOOT` button, plug in the U2C USB cable to the Pi, then release the `BOOT` button. You are now in DFU mode.
+- Check to see if the U2C is in DFU mode and verify the Address
+  ```
+  sudo dfu-util -l
+  ```
+  Output:
+  ```
+  voron@voron:~ $ sudo dfu-util -l
+  [sudo] password for voron: 
+  dfu-util 0.9
+  
+  Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+  Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+  This program is Free Software and has ABSOLUTELY NO WARRANTY
+  Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+  
+  Found DFU: [0483:df11] ver=0200, devnum=5, cfg=1, intf=0, path="1-1.1", alt=2, name="@Internal Flash   /0x08000000/64*02Kg", serial="206D39855542"
+  Found DFU: [0483:df11] ver=0200, devnum=5, cfg=1, intf=0, path="1-1.1", alt=1, name="@Internal Flash   /0x08000000/64*02Kg", serial="206D39855542"
+  Found DFU: [0483:df11] ver=0200, devnum=5, cfg=1, intf=0, path="1-1.1", alt=0, name="@Internal Flash   /0x08000000/64*02Kg", serial="206D39855542"
+  ```
+- Flash the firmware, you can ignore the error in the output.
+  ```
+  sudo dfu-util -D ~/U2C_V2_STM32G0B1.bin -a 0 -s 0x08000000:leave
+  ```
+  Output:
+  ```
+  voron@voron:~ $ sudo dfu-util -D ~/U2C_V2_STM32G0B1.bin -a 0 -s 0x08000000:leave
+  dfu-util 0.9
+  
+  Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+  Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+  This program is Free Software and has ABSOLUTELY NO WARRANTY
+  Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+  
+  dfu-util: Invalid DFU suffix signature
+  dfu-util: A valid DFU suffix will be required in a future dfu-util release!!!
+  Opening DFU capable USB device...
+  ID 0483:df11
+  Run-time device DFU version 011a
+  Claiming USB DFU Interface...
+  Setting Alternate Setting #0 ...
+  Determining device status: state = dfuIDLE, status = 0
+  dfuIDLE, continuing
+  DFU mode device DFU version 011a
+  Device returned transfer size 1024
+  DfuSe interface name: "Internal Flash   "
+  Downloading to address = 0x08000000, size = 4804
+  Download	[=========================] 100%         4804 bytes
+  Download done.
+  File downloaded successfully
+  dfu-util: Error during download get_status
+  ```
+- Unplug and plug in the U2C from the Pi to reset and load the new firmware. You might need to reboot the Pi.
+
 #### Resources
 - [Klipper FAQs - How do I upgrade to the latest software?](https://github.com/Klipper3d/klipper/blob/master/docs/FAQ.md#how-do-i-upgrade-to-the-latest-software)
+- [BTT U2C Flashing Instructions](https://github.com/Esoterical/voron_canbus/tree/main/can_adapter/BigTreeTech%20U2C%20v2.1)
+
+
+
 - [BTT EBB2040 CANBus toolhead Klipper update](https://github.com/Esoterical/voron_canbus/blob/main/Updating.md#updating-toolhead-klipper)
 
 
