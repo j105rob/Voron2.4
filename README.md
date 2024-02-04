@@ -239,12 +239,12 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
   ```
 - Unplug and plug in the U2C from the Pi to reset and load the new firmware. You might need to reboot the Pi.
 
+
+
 #### Resources
 - [Klipper FAQs - How do I upgrade to the latest software?](https://github.com/Klipper3d/klipper/blob/master/docs/FAQ.md#how-do-i-upgrade-to-the-latest-software)
 - [BTT U2C Flashing Instructions](https://github.com/Esoterical/voron_canbus/tree/main/can_adapter/BigTreeTech%20U2C%20v2.1)
-
-
-
+- [BTT EBB2040 Klipper/Katapult Settings](https://github.com/Esoterical/voron_canbus/tree/main/toolhead_flashing/common_hardware/BigTreeTech%20SB2209%20and%20SB2240)
 - [BTT EBB2040 CANBus toolhead Klipper update](https://github.com/Esoterical/voron_canbus/blob/main/Updating.md#updating-toolhead-klipper)
 
 
