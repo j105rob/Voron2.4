@@ -8,7 +8,7 @@ When getting the MCU Protocol Error message in the UI (e.g. Mainsail), you need 
 NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) and one main mcu (BTT Octopus v1.1).
 
 ##### Menuconfig for MCUs:
-- Mainboard BTT Octopus is STM32F446 family, 16 MHz clock, comms on PA11/PA12 USB, 8KiB bootloader offset, always double check via datasheet.
+- Mainboard BTT Octopus is STM32F446 family, 12 MHz clock, comms on PA11/PA12 USB, 8KiB bootloader offset, always double check via datasheet.
 - Toolhead BTT EBB2040 is STM32G0B1 family, 8 MHz clock, comms on PB0/PB1 canbus, 8KiB bootloader offset, UUID 0f6028239d4f.
 
 ##### Source Update to Latest
