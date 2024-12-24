@@ -242,6 +242,7 @@ NOTE: Always do the main MCU last! My set up has one toolhead mcu (BTT EBB2040) 
 
 
 #### Resources
+- [Flash Klipper on to BTT Octopus](https://docs.vorondesign.com/build/software/octopus_klipper.html)
 - [Klipper FAQs - How do I upgrade to the latest software?](https://github.com/Klipper3d/klipper/blob/master/docs/FAQ.md#how-do-i-upgrade-to-the-latest-software)
 - [BTT U2C Flashing Instructions](https://github.com/Esoterical/voron_canbus/tree/main/can_adapter/BigTreeTech%20U2C%20v2.1)
 - [BTT EBB2040 Klipper/Katapult Settings](https://github.com/Esoterical/voron_canbus/tree/main/toolhead_flashing/common_hardware/BigTreeTech%20SB2209%20and%20SB2240)
