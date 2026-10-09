@@ -1,0 +1,2 @@
+# Klipper config lives on a Linux host; keep LF endings so files match the printer byte-for-byte
+config/** text eol=lf
