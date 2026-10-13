@@ -8,6 +8,14 @@ Changes to the printer (`voron.local` / `192.168.4.51`) and this repo, newest fi
 
 ## 2026-10-13
 
+### Flow test — OrcaSlicer "Max flowrate" (no config change)
+- ABS at 255°C, Revo 60 W, standard 0.4 nozzle. Test settings: start 8, end 20, step 0.5.
+- Quality starts to drop at **23 mm**, so the limit is 8 + 23 × 0.5 = **19.5 mm³/s**.
+  - The drop was gradual, and the Clockwork 2 made no clicking or skipping.
+- Recommended filament **Max volumetric speed: 16 mm³/s** (about 82% of the limit; was 12).
+  - This leaves margin for long hot prints, where Clockwork 2 users report slipping from about 18 mm³/s.
+- At 0.25 mm layers, 16 mm³/s allows about 160 mm/s on 0.40 lines and about 140 mm/s on 0.45 infill lines.
+
 ### Input shaper retuned — commit `3288d74`
 - File: `config/voron-24-350.cfg` (`[input_shaper]`)
 - **Why:** after re-tensioning the belts, X had moved to 50.6 Hz, but the config was still tuned for 54 Hz.
@@ -56,7 +64,7 @@ All tests used Shake&Tune v5.1.1. Graphs are in `~/printer_data/config/ShakeTune
 ### Hardware recorded (not in the config files)
 - Filametrix Stealthburner, Clockwork 2 extruder
 - E3D Revo 24 V, 1.75 mm, **60 W HeaterCore**, standard 0.4 mm nozzle
-- Expected flow for ABS at 255°C is about 14–15 mm³/s, estimated from E3D's published data (not yet measured); the slicer cap is 12 mm³/s.
+- Expected flow for ABS at 255°C was about 14–15 mm³/s, estimated from E3D's published data. Measured 19.5 mm³/s on 2026-10-13 (see the flow test above).
 
 ## 2026-10-10
 
@@ -106,7 +114,7 @@ All tests used Shake&Tune v5.1.1. Graphs are in `~/printer_data/config/ShakeTune
 - [ ] Track down the belt B / X-axis 110–133 Hz resonance and the belt peak mismatch, then re-run Shake&Tune.
 - [ ] Inspect toolhead 24 V wiring after the undervoltage shutdown.
 - [ ] Case light right-strip wiring fix, then revert the slowdown.
-- [ ] Run an Orca flow test at 255°C and raise the 12 mm³/s cap if it holds. Consider a Revo High Flow nozzle (about 16–18 mm³/s).
+- [x] Orca flow test at 255°C: limit 19.5 mm³/s (2026-10-13). Raise the filament cap to 16 and the inner wall and infill speeds in Orca.
 - [ ] Recalibrate pressure advance (currently 0.02).
 - [ ] Config review items:
   - `max_accel: 44525` → set a realistic limit
