@@ -6,6 +6,14 @@ Changes to the printer (`voron.local` / `192.168.4.51`) and this repo, newest fi
 
 ---
 
+## 2026-10-21
+
+### Flow ratio — OrcaSlicer "Flow rate → YOLO (Recommended)" (no config change)
+- ABS filament profile, same as the 2026-10-13 flow test.
+- Test range −0.05 to +0.05 in 0.01 steps; smoothest top surface on the **+0.01** block.
+- YOLO is additive: 0.95 + 0.01 = **0.96**.
+- Filament **Flow ratio: 0.96** (was 0.95). Set in the Orca filament profile, not in the Klipper config.
+
 ## 2026-10-13
 
 ### Flow test — OrcaSlicer "Max flowrate" (no config change)
@@ -115,7 +123,8 @@ All tests used Shake&Tune v5.1.1. Graphs are in `~/printer_data/config/ShakeTune
 - [ ] Inspect toolhead 24 V wiring after the undervoltage shutdown.
 - [ ] Case light right-strip wiring fix, then revert the slowdown.
 - [x] Orca flow test at 255°C: limit 19.5 mm³/s (2026-10-13). Raise the filament cap to 16 and the inner wall and infill speeds in Orca.
-- [ ] Recalibrate pressure advance (currently 0.02).
+- [x] Orca flow ratio (YOLO): 0.95 → 0.96 (2026-10-21).
+- [ ] Recalibrate pressure advance (currently 0.02), now that the flow ratio is 0.96.
 - [ ] Config review items:
   - `max_accel: 44525` → set a realistic limit
   - `verify_heater` limits loosened (bed `max_error: 500`)
