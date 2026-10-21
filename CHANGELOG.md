@@ -8,6 +8,12 @@ Changes to the printer (`voron.local` / `192.168.4.51`) and this repo, newest fi
 
 ## 2026-10-21
 
+### Pressure advance retuned
+- File: `config/btt-eeb-can.cfg` (`[extruder]`)
+- `pressure_advance`: 0.02 → **0.04**
+- OrcaSlicer "Pressure advance → PA Pattern", DDE, 0.00–0.08 in 0.002 steps. ABS at 255°C, flow ratio 0.96.
+- Sharpest chevron tips on the 0.04 row.
+
 ### Flow ratio — OrcaSlicer "Flow rate → YOLO (Recommended)" (no config change)
 - ABS filament profile, same as the 2026-10-13 flow test.
 - Test range −0.05 to +0.05 in 0.01 steps; smoothest top surface on the **+0.01** block.
@@ -124,7 +130,7 @@ All tests used Shake&Tune v5.1.1. Graphs are in `~/printer_data/config/ShakeTune
 - [ ] Case light right-strip wiring fix, then revert the slowdown.
 - [x] Orca flow test at 255°C: limit 19.5 mm³/s (2026-10-13). Raise the filament cap to 16 and the inner wall and infill speeds in Orca.
 - [x] Orca flow ratio (YOLO): 0.95 → 0.96 (2026-10-21).
-- [ ] Recalibrate pressure advance (currently 0.02), now that the flow ratio is 0.96.
+- [x] Recalibrate pressure advance: 0.02 → 0.04 (2026-10-21).
 - [ ] Config review items:
   - `max_accel: 44525` → set a realistic limit
   - `verify_heater` limits loosened (bed `max_error: 500`)
