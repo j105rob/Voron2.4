@@ -6,6 +6,16 @@ Changes to the printer (`voron.local` / `192.168.4.51`) and this repo, newest fi
 
 ---
 
+## 2026-11-05
+
+### Toolhead filament runout sensor
+- Files: `config/btt-eeb-can.cfg` (`[filament_switch_sensor toolhead_runout]`), `config/macros.cfg` (`_CLIENT_VARIABLE`)
+- Microswitch already fitted in the toolhead, now wired to the EBB endstop port: C → GND, NO → `PB6`. The port's power pin isn't used.
+- `switch_pin: ^!EBBCan:PB6`: internal pull-up, inverted, because the switch closes to GND when filament is present. A broken wire reads as runout.
+- `pause_on_runout: True`. Mainsail's `RESUME` won't continue while the sensor reads empty (`variable_runout_sensor`).
+
+---
+
 ## 2026-10-21
 
 ### Pressure advance retuned
